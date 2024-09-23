@@ -17,3 +17,19 @@ This repository contains the proposed architecture and migration plan for modern
 
 #Introduction
 This project outlines the initial phase of modernizing Braveheart Technologies' existing AWS infrastructure. The proposed architecture aims to improve scalability, reliability, and developer involvement in the infrastructure management process.
+
+#Proposed Architecture
+
+The proposed architecture utilizes a three-tier architecture with separate layers for:
+
+1.	UI/UX/Presentation
+2.	Application logic
+3.	Data storage 
+
+#AWS Concepts
+•	Application Load Balancers (ALB): Distribute incoming traffic across healthy backend instances.
+•	Auto Scaling Groups (ASG): Automatically manage backend instances based on predefined scaling policies.
+•	Amazon ECS: Container Orchestration for containerized application deployments and scaling.
+•	CloudFront: Content Delivery Network (CDN) for improved performance and global reach.
+•	Route 53: Managed DNS service providing domain name management and routing configuration.
+•	Amazon RDS: Managed relational database service for data storage.
