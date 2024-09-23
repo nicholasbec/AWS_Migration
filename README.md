@@ -84,5 +84,7 @@ This plan lays the groundwork for modernizing Braveheart Technologies' AWS infra
 5.Network infratructure is in place to allow the migration of the data
 6.Post Migration, the adequate monitoring and logging is enforced.
 7.Governance policies are applied 
+8.Test Plans have already been created for #Validation Test/User Acceptance Testing
+
 
 
