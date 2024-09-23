@@ -11,7 +11,7 @@ This repository contains the proposed architecture and migration plan for modern
 2.Proposed Architecture
 3.Migration Plan
 4.Implementation Steps
-5.Testing and Validation
+5.Validation Test/User Acceptance Testing
 6.Conclusion
 7.Assumptions
 
@@ -26,7 +26,7 @@ The proposed architecture utilizes a three-tier architecture with separate layer
 2.	Application logic
 3.	Data storage 
 
-#AWS Concepts
+AWS Concepts
 •	Application Load Balancers (ALB): Distribute incoming traffic across healthy backend instances.
 •	Auto Scaling Groups (ASG): Automatically manage backend instances based on predefined scaling policies.
 •	Amazon ECS: Container Orchestration for containerized application deployments and scaling.
@@ -52,12 +52,37 @@ Update DNS records in Route 53 to point to the new infrastructure.
 Once all services are migrated, switch the traffic from the old to the new infrastructure.
 Decommission the old infrastructure.
 
-#Implementation
+#Implementation Steps
 These are the steps that would be taken at a high-level of the implementation process:
 
 Create security groups for the application.
-1.Define IAM roles with appropriate permissions for these resources.
-2.Provision resources like ASGs, ECS clusters, and databases using Terraform.
-3.Containerize existing applications and deploy them to ECS
-4.Configure CloudFront and Route 53 for load balancing and corret traffic routing.
-5.Migrate data to the new database service/Amazon RDS.
+1.Define IAM roles with appropriate permissions for these resources. 
+2.Create an RBAC model with 3 main job families, with further granularity per role (Eg 1 Role for Backend Developer, another role for Lead Frontend Developer)
+3.Provision resources like ASGs, ECS clusters, and databases using Terraform.
+4.Containerize existing applications and deploy them to ECS
+5.Configure CloudFront and Route 53 for load balancing and corret traffic routing.
+6.Migrate data to the new database service/Amazon RDS
+
+#Validation Test/User Acceptance Testing
+
+The 4 main areas to be tested are: 
+  1. Load
+  2. Functionality
+  3. Performance
+  4. Security
+
+#Conclusion
+
+This plan lays the groundwork for modernizing Braveheart Technologies' AWS infrastructure. By implementing this architecture and migration process, along with making the application more resilient, the company can achieve high availability, improved performance and it empowers developers to participate actively in managing this infrastructure. 
+
+#Assumptions
+
+1.Application frameworks do not rely on a legacy framework that cannot be containerised.
+2.Cost optimization has not been considered. However moving to a more elastic solution should help reduce costs.
+3.There are several dependancies in this plan, for example a data migration plan, a back-up plan, a roll-back plan etc that I have not mentioned. These should be in place prior to any migration.
+4.As the plan is to get the developers involved, it's assumed that they would be involved in the migration. For example, they could be working on the IAC piece, or code refactoring for microservices. 
+5.Network infratructure is in place to allow the migration of the data
+6.Post Migration, the adequate monitoring and logging is enforced.
+7.Governance policies are applied 
+
+
